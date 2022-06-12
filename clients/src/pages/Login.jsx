@@ -1,26 +1,36 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  let navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  console.log(id);
-  console.log(password);
 
-  function as() {
+  function login() {
     const info = {
       id: id,
-      password: password,
+      pw: password,
     };
 
-    fetch("/login", {
+    fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(info),
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+          navigate("/gogo");
+        } else {
+          alert(res.msg);
+        }
+      })
+      .catch((err) => {
+        console.error(new Error("에러 발생"));
+      });
   }
 
   return (
@@ -28,16 +38,16 @@ const Login = () => {
       <Header>LOGIN</Header>
       <IdBox>
         User ID
-        <ID placeholder="ID" onChange={(e) => setId(e.target.value)}></ID>
+        <ID placeholder="ID" onChange={(e) => setId(`${e.target.value}`)}></ID>
       </IdBox>
       <PwBox>
         Password
         <PW
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(`${e.target.value}`)}
         ></PW>
       </PwBox>
-      <LoginBtn onClick={() => as}>로그인</LoginBtn>
+      <LoginBtn onClick={login}>로그인</LoginBtn>
       <Footer>
         <Comment1>회원이 아니라면? </Comment1>
         <Comment2 to="/sign-up">회원가입</Comment2>

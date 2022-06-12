@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login, SignUp } from "../pages/index";
+import { Login, SignUp, Gogo } from "../pages/index";
 
 class App extends Component {
   render() {
@@ -8,6 +8,7 @@ class App extends Component {
       <BrowserRouter>
         <Routes>
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/gogo" element={<Gogo />} />
           <Route path="/" element={<Login />} />
         </Routes>
       </BrowserRouter>
