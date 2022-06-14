@@ -6,7 +6,6 @@ const User = require("./models/User");
 
 app.use(express.json());
 var cors = require("cors");
-const UserStorage = require("./models/UserStorage");
 app.use(cors());
 
 const port = 5000;
@@ -23,12 +22,21 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../clients/build/index.html"));
 });
 
+// 로그인 요청 api
 app.post("/login", function (req, res) {
   const user = new User(req.body);
   const response = user.login();
   return res.json(response);
 });
 
+// 회원가입 요청 api
+app.post("/register", function (req, res) {
+  const user = new User(req.body);
+  const response = user.register();
+  return res.json(response);
+});
+
+// 라우팅 작업을 react에게 전임
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../clients/build/index.html"));
 });

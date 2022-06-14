@@ -7,18 +7,26 @@ const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  function login() {
-    const info = {
-      id: id,
-      pw: password,
-    };
+  const [inputValue, setInputValue] = useState({
+    id: "",
+    pw: "",
+  });
 
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
+
+  function login() {
     fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(info),
+      body: JSON.stringify(inputValue),
     })
       .then((res) => res.json())
       .then((res) => {
@@ -38,14 +46,11 @@ const Login = () => {
       <Header>LOGIN</Header>
       <IdBox>
         User ID
-        <ID placeholder="ID" onChange={(e) => setId(`${e.target.value}`)}></ID>
+        <ID placeholder="ID" name="id" onChange={handleInput} />
       </IdBox>
       <PwBox>
         Password
-        <PW
-          placeholder="Password"
-          onChange={(e) => setPassword(`${e.target.value}`)}
-        ></PW>
+        <PW placeholder="Password" name="pw" onChange={handleInput} />
       </PwBox>
       <LoginBtn onClick={login}>로그인</LoginBtn>
       <Footer>
