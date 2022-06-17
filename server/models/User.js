@@ -6,9 +6,9 @@ class User {
   }
 
   // 로그인
-  login() {
+  async login() {
     const client = this.body;
-    const { id, pw } = UserStorage.getUserInfo(client.id);
+    const { id, pw } = await UserStorage.getUserInfo(client.id);
     if (id) {
       if (id === client.id && pw === client.pw) {
         return { success: true };
@@ -19,9 +19,14 @@ class User {
   }
 
   // 회원가입
-  register() {
+  async register() {
     const client = this.body;
-    UserStorage.save(client);
+    try {
+      const response = await UserStorage.save(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err };
+    }
   }
 }
 

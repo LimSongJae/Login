@@ -23,16 +23,16 @@ app.get("/", function (req, res) {
 });
 
 // 로그인 요청 api
-app.post("/login", function (req, res) {
+app.post("/login", async function (req, res) {
   const user = new User(req.body);
-  const response = user.login();
+  const response = await user.login();
   return res.json(response);
 });
 
 // 회원가입 요청 api
-app.post("/register", function (req, res) {
+app.post("/register", async function (req, res) {
   const user = new User(req.body);
-  const response = user.register();
+  const response = await user.register();
   return res.json(response);
 });
 
