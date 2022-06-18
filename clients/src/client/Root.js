@@ -1,11 +1,10 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import App from 'shared/App';
+import React from "react";
+import App from "shared/App";
 
 const Root = () => (
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>
+  <>
+    <App />
+  </>
 );
 
 export default Root;

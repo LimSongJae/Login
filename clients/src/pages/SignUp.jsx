@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  let navigate = useNavigate();
   // 회원가입 요청 정보
   const [inputValue, setInputValue] = useState({
     id: "",
@@ -13,7 +15,7 @@ const SignUp = () => {
   });
 
   // inputValue 비구조화
-  const { id, pw, name, email, age, gender } = inputValue;
+  const { id, pw, name, email, age } = inputValue;
   const [checkBoxClicked, setCheckBoxClicked] = useState(false);
 
   // inputValue값 변경 핸들러
@@ -70,7 +72,14 @@ const SignUp = () => {
       body: JSON.stringify(inputValue),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.success) {
+          alert("회원가입에 성공하셨습니다.");
+          navigate("/");
+        } else {
+          alert("이미 존재하는 아이디 입니다.");
+        }
+      })
       .catch((err) => {
         console.error(new Error("에러 발생"));
       });
@@ -103,7 +112,12 @@ const SignUp = () => {
       </EmailBox>
       <AgeBox>
         Age
-        <Age placeholder="Age" name="age" onChange={handleInput} />
+        <Age
+          type="number"
+          placeholder="Age"
+          name="age"
+          onChange={handleInput}
+        />
         <ImportCondition>※ 숫자만 입력하세요</ImportCondition>
       </AgeBox>
       <GenderBox>

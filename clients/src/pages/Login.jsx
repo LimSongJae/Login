@@ -4,8 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   let navigate = useNavigate();
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
 
   const [inputValue, setInputValue] = useState({
     id: "",
