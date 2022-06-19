@@ -18,6 +18,7 @@ const Login = () => {
     });
   };
 
+  // 로그인 api 호출
   function login() {
     fetch("http://localhost:5000/login", {
       method: "POST",
