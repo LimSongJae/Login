@@ -7,11 +7,17 @@
 Table: users
 
 Columns:
+
   id varchar(30) PK 
+  
   pw varchar(30) 
+  
   name varchar(30) 
-  email varchar(50) 
+  
+  email varchar(50)
+  
   age int 
+  
   gender varchar(10)
 
 
