@@ -21,3 +21,4 @@
         gender varchar(10)
 
 
+open API: 공공데이터 사이트에서 퍼옴
