@@ -23,4 +23,4 @@
         gender varchar(10)
 
 
-**clients와 server를 각각 npm start로 둘다 실행시켜야함 !!
+**clients와 server를 각각 npm start로 둘다 실행시켜야함 !!**
