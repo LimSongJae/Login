@@ -3,7 +3,12 @@
 ## 사용기술
 
 + 백엔드
-++ ㄴ
+    - Node.js
+    - express
+    - MySQL
++ 프론트엔드
+    - React
+    - StyledComponent
 
 ## 주의사항
 
