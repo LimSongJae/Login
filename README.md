@@ -6,6 +6,7 @@
     - Node.js
     - express
     - MySQL
+    
 + 프론트엔드
     - React
     - StyledComponent
