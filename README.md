@@ -4,20 +4,20 @@
 
 **TABLE 정보**
 
-Table: users
+    Table: users
 
-Columns:
+    Columns:
 
-    id varchar(30) PK 
+        id varchar(30) PK 
   
-    pw varchar(30) 
+        pw varchar(30) 
   
-  name varchar(30) 
+        name varchar(30) 
   
-  email varchar(50)
+        email varchar(50)
   
-  age int 
+        age int 
   
-  gender varchar(10)
+        gender varchar(10)
 
 
