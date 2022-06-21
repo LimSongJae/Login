@@ -5,6 +5,7 @@
 **TABLE 정보**
 
 Table: users
+
 Columns:
   id varchar(30) PK 
   pw varchar(30) 
