@@ -8,9 +8,9 @@ Table: users
 
 Columns:
 
-  id varchar(30) PK 
+    id varchar(30) PK 
   
-  pw varchar(30) 
+    pw varchar(30) 
   
   name varchar(30) 
   
